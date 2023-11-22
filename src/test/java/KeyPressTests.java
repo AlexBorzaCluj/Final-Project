@@ -16,13 +16,26 @@ public class KeyPressTests extends BasePage {
         super.setUp();
         keyPressPage = new KeyPressPage(driver);}
 
+
     @Description("Write a letter and check the result")
     @Test
+
     public void writeALetterAndCheckTheResult(){
         driver.findElement(KEY_PRESS_LINK_TEXT).click();
         keyPressPage.typeInTheTextField("T");
 
         String actualResult = driver.findElement(By.id("result")).getText();
         Assert.assertEquals(actualResult, "You entered: T");}
+
+
+    @Description ("Press Shift and check the result")
+    @Test
+
+    public void pressShiftAndCheckTheResult() {
+        driver.findElement(KEY_PRESS_LINK_TEXT).click();
+        keyPressPage.typeInShiftKey();
+        String actualResult = driver.findElement(By.id("result")).getText();
+    Assert.assertEquals(actualResult, "You entered: SHIFT");
+    }
 
 }
